@@ -1,10 +1,17 @@
-﻿namespace SampleTaskWeb.Shared
+﻿using System;
+
+namespace SampleTaskWeb.Shared
 {
   /// <summary>
   /// Represents a device
   /// </summary>
   public class Device
   {
+    /// <summary>
+    /// Internal Identifier
+    /// </summary>
+    public Guid Id { get; set; }
+
     /// <summary>
     /// Name of the device
     /// </summary>

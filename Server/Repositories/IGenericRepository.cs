@@ -26,6 +26,6 @@ namespace SampleTaskWeb.Server.Repositories
     /// Deletes the given entity async
     /// </summary>
     /// <param name="entity">The entity to be deleted</param>
-    Task Delete(T entity);  
+    Task DeleteAsync(T entity);  
   }
 }
