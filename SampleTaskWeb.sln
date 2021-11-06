@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleTaskWeb.Shared", "Sha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleTaskWeb.DAL", "SampleTaskWeb.DAL\SampleTaskWeb.DAL.csproj", "{9D79679D-595F-4E50-ABEE-CBFAE4675BC2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C995C23A-076C-477A-A6C9-493C1740F97B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleTaskWeb.DAL.Tests", "SampleTaskWeb.DAL.Tests\SampleTaskWeb.DAL.Tests.csproj", "{8C0B0244-7F84-4580-AE9C-CC7A30DE37F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{9D79679D-595F-4E50-ABEE-CBFAE4675BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D79679D-595F-4E50-ABEE-CBFAE4675BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D79679D-595F-4E50-ABEE-CBFAE4675BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0B0244-7F84-4580-AE9C-CC7A30DE37F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0B0244-7F84-4580-AE9C-CC7A30DE37F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0B0244-7F84-4580-AE9C-CC7A30DE37F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0B0244-7F84-4580-AE9C-CC7A30DE37F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C0B0244-7F84-4580-AE9C-CC7A30DE37F6} = {C995C23A-076C-477A-A6C9-493C1740F97B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B18FAE2D-8B01-4F85-BC3A-A1A12EDE41D2}
