@@ -35,10 +35,17 @@
             {
               <MudContainer Class="p-4" Style="width:300px; padding-top: 10px">
                 <MudCard Style="width:300px;" Outlined="true" Elevation="4">
+                  <MudCardHeader>
+                    <CardHeaderContent>
+                      <MudText Color="Color.Primary">
+                        Name: @device.Name
+                      </MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                      <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Info" />
+                    </CardHeaderActions>
+                  </MudCardHeader>
                   <MudCardContent>
-                    <MudText>
-                      Name: @device.Name
-                    </MudText>
                     <MudText Typo="Typo.body2">
                       Failsafe: @device.FailSafe.ToString()
                     </MudText>
