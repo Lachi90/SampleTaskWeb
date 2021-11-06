@@ -29,7 +29,8 @@ namespace SampleTaskWeb.DAL.Repositories
       if (device != null)
       {
         device.Id = Guid.NewGuid();
-        await _dbContext.AddAsync(device);
+        await _dbContext.Set<Device>().AddAsync(device);
+        await _dbContext.SaveChangesAsync();
       }
 
       return device;
@@ -42,6 +43,7 @@ namespace SampleTaskWeb.DAL.Repositories
     public async Task DeleteAsync(Device device)
     {
       _dbContext.Set<Device>().Remove(device);
+      await _dbContext.SaveChangesAsync();
     }
 
     /// <summary>

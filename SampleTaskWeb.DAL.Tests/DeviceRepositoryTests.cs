@@ -11,6 +11,7 @@ namespace SampleTaskWeb.DAL.Tests
   public class DeviceRepositoryTests
   {
     private readonly DeviceRepository _deviceRepository;
+    private readonly DeviceDbContext _deviceDbContextContext;
 
     public DeviceRepositoryTests()
     {
@@ -18,9 +19,9 @@ namespace SampleTaskWeb.DAL.Tests
       DbContextOptions<DeviceDbContext> options = new DbContextOptionsBuilder<DeviceDbContext>()
                       .UseInMemoryDatabase(databaseName: dbName).Options;
 
-      DeviceDbContext deviceDbContextContext = new(options);
+      _deviceDbContextContext = new(options);
 
-      _deviceRepository = new DeviceRepository(deviceDbContextContext);
+      _deviceRepository = new DeviceRepository(_deviceDbContextContext);
     }
 
     [Fact]
@@ -37,7 +38,8 @@ namespace SampleTaskWeb.DAL.Tests
 
       // Assert
       device.Id.Should().NotBeEmpty();
-
+      var devices = await _deviceRepository.GetAllAsync();
+      devices.Should().HaveCount(1);
     }
 
     [Fact]
@@ -50,5 +52,31 @@ namespace SampleTaskWeb.DAL.Tests
       device.Should().BeNull();
     }
 
+    [Fact]
+    public async Task DeleteAsync_ShouldRemoveEntry()
+    {
+      // Arrange
+      var device = await _deviceRepository.AddAsync(new Device() { DeviceName = "TestDevice" });
+
+      // Act 
+      await _deviceRepository.DeleteAsync(device);
+
+      // Assert
+      var areDevicesExisting = await _deviceDbContextContext.Devices.AnyAsync(d => d.Id == device.Id);
+      areDevicesExisting.Should().BeFalse();
+    }
+
+    [Fact]
+    public async Task GetAllAsync_ShouldReturnAllDevices()
+    {
+      // Arrange
+      _ = await _deviceRepository.AddAsync(new Device() { DeviceName = "TestDevice" });
+
+      // Act
+      var devices = await _deviceRepository.GetAllAsync();
+
+      // Arrange
+      devices.Should().HaveCount(1);
+    }
   }
 }
