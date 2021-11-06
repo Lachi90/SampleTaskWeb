@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using SampleTaskWeb.Shared;
 using System.Net.Http.Json;
+using System;
 
 namespace SampleTaskWeb.Client.Manager
 {
@@ -38,6 +39,15 @@ namespace SampleTaskWeb.Client.Manager
     {
       var devices = await _httpClient.GetFromJsonAsync<IEnumerable<Device>>("/device/devices");
       return devices;
+    }
+
+    /// <summary>
+    /// Deletes a device from the backend
+    /// </summary>
+    /// <param name="device">The device to deleted</param>
+    public async Task DeleteDeviceAsync(Device device)
+    {
+      await _httpClient.PostAsJsonAsync("/device/delete", device);
     }
   }
 }

@@ -1,5 +1,6 @@
 ﻿@using SampleTaskWeb.Client.Manager
 @inherits LayoutComponentBase
+
 @inject HttpClient _httpClient
 @inject DeviceManager _deviceManager
 
@@ -42,7 +43,7 @@
                       </MudText>
                     </CardHeaderContent>
                     <CardHeaderActions>
-                      <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Info" />
+                      <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Info" OnClick="@(args => DeleteButtonPressed(args, device))" />
                     </CardHeaderActions>
                   </MudCardHeader>
                   <MudCardContent>
