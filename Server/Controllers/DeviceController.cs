@@ -22,7 +22,7 @@ namespace SampleTaskWeb.Server.Controllers
     /// <summary>
     /// Gets a list of all devices
     /// </summary>
-    [HttpGet]
+    [HttpGet("devices")]
     public async Task<IActionResult> GetAllDevicesAsync()
     {
       var devices = await _deviceRepository.GetAllAsync();
@@ -33,7 +33,7 @@ namespace SampleTaskWeb.Server.Controllers
     /// Adds a device to the database
     /// </summary>
     /// <param name="device">The device to be added</param>
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> AddDeviceAsync(Device device)
     {
       var deviceAdded = await _deviceRepository.AddAsync(device);
@@ -44,10 +44,10 @@ namespace SampleTaskWeb.Server.Controllers
     /// Deletes a device from the database
     /// </summary>
     /// <param name="device"></param>
-    [HttpPost]
+    [HttpPost("delete")]
     public async Task<IActionResult> DeleteDeviceAsync(Device device)
     {
-      await _deviceRepository.DeleteAsync(device);
+      await _deviceRepository.DeleteAsync(device); 
       return Ok();
     }
   }
