@@ -1,13 +1,32 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-  <div class="sidebar">
-    <NavMenu />
-  </div>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-  <div class="main">
-    <div class="content px-4">
-      @Body
-    </div>
-  </div>
-</div>
+<MudLayout>
+  <MudAppBar Color="Color.Primary" Fixed="false">
+    <h3>Sample-Task-Web by Christian Lachmann 2021-11-07</h3>
+    <MudSpacer />
+    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Lachi90/SampleTaskWeb" />
+  </MudAppBar>
+  <MudMainContent>
+    <MudContainer>
+      <div class="d-flex flex-row-reverse">
+        <MudButton HtmlTag="label"
+                   Class="p-2"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Filled.CloudUpload"
+                   for="fileInput">
+          Upload Json
+        </MudButton>
+      </div>
+      <div class="pt-4">
+        <MudPaper>
+          <p>Content</p>
+        </MudPaper>
+      </div>
+    </MudContainer>
+  </MudMainContent>
+</MudLayout>
