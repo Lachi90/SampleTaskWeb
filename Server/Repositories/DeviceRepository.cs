@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SampleTaskWeb.Server.Repositories;
-using SampleTaskWeb.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SampleTaskWeb.Shared;
 
-namespace SampleTaskWeb.DAL.Repositories
+namespace SampleTaskWeb.Server.Repositories
 {
   /// <summary>
   /// Repository for managing devices

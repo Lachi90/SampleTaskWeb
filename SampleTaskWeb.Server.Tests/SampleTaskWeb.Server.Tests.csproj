@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SampleTaskWeb.DAL\SampleTaskWeb.DAL.csproj" />
+    <ProjectReference Include="..\Server\SampleTaskWeb.Server.csproj" />
     <ProjectReference Include="..\Shared\SampleTaskWeb.Shared.csproj" />
   </ItemGroup>
 

@@ -1,9 +1,10 @@
 ﻿using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using SampleTaskWeb.DAL.Repositories;
 using SampleTaskWeb.Shared;
 using System;
 using System.Threading.Tasks;
+using SampleTaskWeb.Server;
+using SampleTaskWeb.Server.Repositories;
 using Xunit;
 
 namespace SampleTaskWeb.DAL.Tests

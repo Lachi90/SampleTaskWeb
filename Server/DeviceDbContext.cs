@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SampleTaskWeb.Shared;
 
-namespace SampleTaskWeb.DAL
+namespace SampleTaskWeb.Server
 {
 
   /// <summary>
