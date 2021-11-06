@@ -17,7 +17,7 @@ namespace SampleTaskWeb.Server
     {
       modelBuilder.Entity<Device>(device =>
       {
-        device.HasKey(e => e.Id);
+        device.HasKey(e => e.InternalId);
         device.ToTable("Devices");
       });
     }

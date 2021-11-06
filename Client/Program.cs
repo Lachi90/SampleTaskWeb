@@ -4,6 +4,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MudBlazor.Services;
+using SampleTaskWeb.Client.Manager;
 
 namespace SampleTaskWeb.Client
 {
@@ -16,6 +17,7 @@ namespace SampleTaskWeb.Client
 
       builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
       builder.Services.AddMudServices();
+      builder.Services.AddTransient<DeviceManager>();
 
       await builder.Build().RunAsync();
     }

@@ -10,12 +10,12 @@ namespace SampleTaskWeb.Shared
     /// <summary>
     /// Internal Identifier
     /// </summary>
-    public Guid Id { get; set; }
+    public Guid InternalId { get; set; }
 
     /// <summary>
     /// Name of the device
     /// </summary>
-    public string DeviceName { get; set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// Indicates whether the device is failsafe

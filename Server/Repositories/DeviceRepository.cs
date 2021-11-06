@@ -25,11 +25,18 @@ namespace SampleTaskWeb.Server.Repositories
     /// <returns>The device with internal assigned id</returns>
     public async Task<Device> AddAsync(Device device)
     {
-      if (device != null)
+      try
       {
-        device.Id = Guid.NewGuid();
-        await _deviceDbContext.Set<Device>().AddAsync(device);
-        await _deviceDbContext.SaveChangesAsync();
+        if (device != null)
+        {
+          device.InternalId = Guid.NewGuid();
+          await _deviceDbContext.Set<Device>().AddAsync(device);
+          await _deviceDbContext.SaveChangesAsync();
+        }
+      }
+      catch (Exception exception)
+      {
+        Console.WriteLine(exception);
       }
 
       return device;

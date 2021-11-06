@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SampleTaskWeb.Server;
 
 namespace SampleTaskWeb.Server.Migrations
 {
     [DbContext(typeof(DeviceDbContext))]
-    partial class DeviceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211106144229_Changed Id Column")]
+    partial class ChangedIdColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,6 +27,9 @@ namespace SampleTaskWeb.Server.Migrations
                     b.Property<bool?>("AdvancedEnvironmentConditions")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("DeviceName")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("DeviceTypeId")
                         .HasColumnType("TEXT");
 
@@ -35,9 +40,6 @@ namespace SampleTaskWeb.Server.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("InstallationPosition")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TempMax")
