@@ -29,5 +29,15 @@ namespace SampleTaskWeb.Client.Manager
         await _httpClient.PostAsJsonAsync("/device/create", device);
       }
     }
+
+    /// <summary>
+    /// Gets all the devices from the backend
+    /// </summary>
+    /// <returns>A list of devices</returns>
+    public async Task<IEnumerable<Device>> GetAllDevicesAsync()
+    {
+      var devices = await _httpClient.GetFromJsonAsync<IEnumerable<Device>>("/device/devices");
+      return devices;
+    }
   }
 }

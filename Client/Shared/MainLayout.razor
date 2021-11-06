@@ -28,9 +28,29 @@
         </MudButton>
       </div>
       <div class="pt-4">
-        <MudPaper>
-          <p>Content</p>
-        </MudPaper>
+        <div style="display: flex; flex-wrap: wrap;">
+          @if (_devices.Any())
+          {
+            @foreach (var device in _devices)
+            {
+              <MudContainer Class="p-4" Style="width:300px; padding-top: 10px">
+                <MudCard Style="width:300px;" Outlined="true" Elevation="4">
+                  <MudCardContent>
+                    <MudText>
+                      Name: @device.Name
+                    </MudText>
+                    <MudText Typo="Typo.body2">
+                      Failsafe: @device.FailSafe.ToString()
+                    </MudText>
+                    <MudText Typo="Typo.body2">
+                      DeviceTypeId: @device.DeviceTypeId
+                    </MudText>
+                  </MudCardContent>
+                </MudCard>
+              </MudContainer>
+            }
+          }
+        </div>
       </div>
     </MudContainer>
   </MudMainContent>
