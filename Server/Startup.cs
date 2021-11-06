@@ -29,6 +29,8 @@ namespace SampleTaskWeb.Server
       {
         opt.UseSqlite(Configuration.GetConnectionString("DeviceDatabase"));
       });
+
+      services.AddScoped<IDeviceRepository, DeviceRepository>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
