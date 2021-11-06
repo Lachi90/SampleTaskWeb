@@ -38,7 +38,7 @@ namespace SampleTaskWeb.Client.Parser
       using (var streamReader = new StreamReader(memoryStream))
       {
         var jsonContent = await streamReader.ReadToEndAsync();
-        devices = JsonConvert.DeserializeObject<DevicesCollection>(jsonContent).Devices;
+        devices = JsonConvert.DeserializeObject<DeviceCollection>(jsonContent).Devices;
       }
 
       return devices;
