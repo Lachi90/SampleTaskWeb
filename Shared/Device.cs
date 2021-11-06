@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace SampleTaskWeb.Shared
 {
@@ -56,5 +57,14 @@ namespace SampleTaskWeb.Shared
     /// Indicates if the device can work in advanced environmental conditions
     /// </summary>
     public bool? AdvancedEnvironmentConditions { get; set; }
+
+    /// <summary>
+    /// Converts the instance of the class to a json string
+    /// </summary>
+    /// <returns>A json representation of the instance</returns>
+    public string ToJsonString()
+    {
+      return JsonConvert.SerializeObject(this);
+    }
   }
 }

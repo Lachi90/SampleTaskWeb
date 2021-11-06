@@ -1,8 +1,4 @@
-﻿@using SampleTaskWeb.Client.Manager
-@inherits LayoutComponentBase
-
-@inject HttpClient _httpClient
-@inject DeviceManager _deviceManager
+﻿@inherits LayoutComponentBase
 
 <MudThemeProvider />
 <MudDialogProvider />
@@ -15,51 +11,6 @@
     <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Lachi90/SampleTaskWeb" />
   </MudAppBar>
   <MudMainContent>
-    <InputFile id="fileInput" OnChange="FileSelected" accept=".json" hidden />
-
-    <MudContainer>
-      <div class="d-flex flex-row-reverse">
-        <MudButton HtmlTag="label"
-                   Class="p-2"
-                   Variant="Variant.Filled"
-                   Color="Color.Primary"
-                   StartIcon="@Icons.Filled.CloudUpload"
-                   for="fileInput">
-          Upload Json
-        </MudButton>
-      </div>
-      <div class="pt-4">
-        <div style="display: flex; flex-wrap: wrap;">
-          @if (_devices.Any())
-          {
-            @foreach (var device in _devices)
-            {
-              <MudContainer Class="p-4" Style="width:300px; padding-top: 10px">
-                <MudCard Style="width:300px;" Outlined="true" Elevation="4">
-                  <MudCardHeader>
-                    <CardHeaderContent>
-                      <MudText Color="Color.Primary">
-                        Name: @device.Name
-                      </MudText>
-                    </CardHeaderContent>
-                    <CardHeaderActions>
-                      <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Info" OnClick="@(args => DeleteButtonPressed(args, device))" />
-                    </CardHeaderActions>
-                  </MudCardHeader>
-                  <MudCardContent>
-                    <MudText Typo="Typo.body2">
-                      Failsafe: @device.FailSafe.ToString()
-                    </MudText>
-                    <MudText Typo="Typo.body2">
-                      DeviceTypeId: @device.DeviceTypeId
-                    </MudText>
-                  </MudCardContent>
-                </MudCard>
-              </MudContainer>
-            }
-          }
-        </div>
-      </div>
-    </MudContainer>
+    @Body
   </MudMainContent>
 </MudLayout>

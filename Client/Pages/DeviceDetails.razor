@@ -1,0 +1,15 @@
+﻿@page "/device/{Device}"
+
+<MudContainer>
+  <MudTable Items="@_properties">
+    <HeaderContent>
+      <MudTh>PropertyName</MudTh>
+      <MudTh>PropertyValue</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+      <MudTd>@context.PropertyKey</MudTd>
+      <MudTd>@context.PropertyValue</MudTd>
+    </RowTemplate>
+  </MudTable>
+</MudContainer>
+
