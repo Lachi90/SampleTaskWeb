@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using SampleTaskWeb.Server.Repositories;
 
 namespace SampleTaskWeb.Server
 {
@@ -22,6 +25,16 @@ namespace SampleTaskWeb.Server
 
       services.AddControllersWithViews();
       services.AddRazorPages();
+
+      services.AddDbContext<DeviceDbContext>(opt =>
+      {
+        opt.UseSqlite(Configuration.GetConnectionString("DeviceDatabase"));
+      });
+
+      services.AddSwaggerGen(
+        c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Device API", Version = "v1" }));
+
+      services.AddScoped<IDeviceRepository, DeviceRepository>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +51,10 @@ namespace SampleTaskWeb.Server
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
+
+      app.UseSwagger();
+      app.UseSwaggerUI(
+        c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SampleTaskWeb.Server v1"));
 
       app.UseHttpsRedirection();
       app.UseBlazorFrameworkFiles();

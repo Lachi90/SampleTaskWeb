@@ -1,22 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SampleTaskWeb.Server.Repositories;
-using SampleTaskWeb.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SampleTaskWeb.Shared;
 
-namespace SampleTaskWeb.DAL.Repositories
+namespace SampleTaskWeb.Server.Repositories
 {
   /// <summary>
   /// Repository for managing devices
   /// </summary>
-  public class DeviceRepository : IGenericRepository<Device>
+  public class DeviceRepository : IDeviceRepository
   {
-    private readonly DbContext _dbContext;
+    private readonly DeviceDbContext _deviceDbContext;
 
-    public DeviceRepository(DbContext dbContext)
+    public DeviceRepository(DeviceDbContext deviceDbContext)
     {
-      _dbContext = dbContext;
+      _deviceDbContext = deviceDbContext;
     }
 
     /// <summary>
@@ -29,8 +28,8 @@ namespace SampleTaskWeb.DAL.Repositories
       if (device != null)
       {
         device.Id = Guid.NewGuid();
-        await _dbContext.Set<Device>().AddAsync(device);
-        await _dbContext.SaveChangesAsync();
+        await _deviceDbContext.Set<Device>().AddAsync(device);
+        await _deviceDbContext.SaveChangesAsync();
       }
 
       return device;
@@ -42,8 +41,8 @@ namespace SampleTaskWeb.DAL.Repositories
     /// <param name="device"></param>
     public async Task DeleteAsync(Device device)
     {
-      _dbContext.Set<Device>().Remove(device);
-      await _dbContext.SaveChangesAsync();
+      _deviceDbContext.Set<Device>().Remove(device);
+      await _deviceDbContext.SaveChangesAsync();
     }
 
     /// <summary>
@@ -52,7 +51,7 @@ namespace SampleTaskWeb.DAL.Repositories
     /// <returns>A list of all devices</returns>
     public async Task<IEnumerable<Device>> GetAllAsync()
     {
-      return await _dbContext.Set<Device>().ToListAsync();
+      return await _deviceDbContext.Set<Device>().ToListAsync();
     }
   }
 }
