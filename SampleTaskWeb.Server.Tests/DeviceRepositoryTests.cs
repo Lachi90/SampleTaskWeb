@@ -31,14 +31,14 @@ namespace SampleTaskWeb.DAL.Tests
       // Arrange
       var device = new Device()
       {
-        DeviceName = "TestDevice"
+        Name = "TestDevice"
       };
       
       // Act
       device = await _deviceRepository.AddAsync(device);
 
       // Assert
-      device.Id.Should().NotBeEmpty();
+      device.InternalId.Should().NotBeEmpty();
       var devices = await _deviceRepository.GetAllAsync();
       devices.Should().HaveCount(1);
     }
@@ -57,13 +57,13 @@ namespace SampleTaskWeb.DAL.Tests
     public async Task DeleteAsync_ShouldRemoveEntry()
     {
       // Arrange
-      var device = await _deviceRepository.AddAsync(new Device() { DeviceName = "TestDevice" });
+      var device = await _deviceRepository.AddAsync(new Device() { Name = "TestDevice" });
 
       // Act 
       await _deviceRepository.DeleteAsync(device);
 
       // Assert
-      var areDevicesExisting = await _deviceDbContextContext.Devices.AnyAsync(d => d.Id == device.Id);
+      var areDevicesExisting = await _deviceDbContextContext.Devices.AnyAsync(d => d.InternalId == device.InternalId);
       areDevicesExisting.Should().BeFalse();
     }
 
@@ -71,7 +71,7 @@ namespace SampleTaskWeb.DAL.Tests
     public async Task GetAllAsync_ShouldReturnAllDevices()
     {
       // Arrange
-      _ = await _deviceRepository.AddAsync(new Device() { DeviceName = "TestDevice" });
+      _ = await _deviceRepository.AddAsync(new Device() { Name = "TestDevice" });
 
       // Act
       var devices = await _deviceRepository.GetAllAsync();

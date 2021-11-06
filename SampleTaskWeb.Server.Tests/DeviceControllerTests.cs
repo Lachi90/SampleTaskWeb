@@ -26,7 +26,7 @@ namespace SampleTaskWeb.Server.Tests
     public async Task GetAllDevicesAsync_ShouldReturnAllDevices()
     {
       // Arrange
-      var device = new Device() { Id = Guid.NewGuid(), DeviceName = "TestDevice" };
+      var device = new Device() { InternalId = Guid.NewGuid(), Name = "TestDevice" };
 
       _deviceRepository.Setup(x => x.GetAllAsync())
         .ReturnsAsync(new List<Device>() { device });
@@ -44,7 +44,7 @@ namespace SampleTaskWeb.Server.Tests
     public async Task AddDeviceAsync_ShouldAddDeviceSuccessfully()
     {
       // Arrange
-      var device = new Device() { Id = Guid.NewGuid(), DeviceName = "TestDevice"};
+      var device = new Device() { InternalId = Guid.NewGuid(), Name = "TestDevice"};
 
       _deviceRepository.Setup(x => x.AddAsync(It.IsAny<Device>()))
         .ReturnsAsync(device);
@@ -55,7 +55,7 @@ namespace SampleTaskWeb.Server.Tests
       // Assert
       var okResult = actionResult.Should().BeOfType<OkObjectResult>().Subject;
       var deviceAdded = okResult.Value.Should().BeAssignableTo<Device>().Subject;
-      deviceAdded.DeviceName.Should().BeEquivalentTo("TestDevice");
+      deviceAdded.Name.Should().BeEquivalentTo("TestDevice");
     }
 
     [Fact]

@@ -1,4 +1,7 @@
-﻿@inherits LayoutComponentBase
+﻿@using SampleTaskWeb.Client.Manager
+@inherits LayoutComponentBase
+@inject HttpClient _httpClient
+@inject DeviceManager _deviceManager
 
 <MudThemeProvider />
 <MudDialogProvider />
@@ -11,6 +14,8 @@
     <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Lachi90/SampleTaskWeb" />
   </MudAppBar>
   <MudMainContent>
+    <InputFile id="fileInput" OnChange="FileSelected" accept=".json" hidden />
+
     <MudContainer>
       <div class="d-flex flex-row-reverse">
         <MudButton HtmlTag="label"
