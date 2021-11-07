@@ -73,6 +73,30 @@ For creating the database a database-first-approach via entity framework is impl
 
 The build-in dependency injection possibility of ASP.NET Core is used to register the repository for accessing the database.  
 
+# Branching structure
+To keep best track of all changes a branching concept was introduced.
+
+## Main branch
+The main branch can only be committed to via pull request and is only used for "releases" or in this case when task gets send over to the order creator.
+
+## Develop branch
+Also this branch is only reachable via pull request. It combines the source and commits from all feature branches.
+
+## Feature branches
+There are several feature branches to keep each part of the development cleanly separated from each other. 
+
+There are the following feature branches:
+| Branch                        | Purpose                                                                 |
+|-------------------------------|-------------------------------------------------------------------------|
+| /feature/init-project         | Setup of the project structure                                          |
+| /feature/AddRepository        | Added repository pattern (database access)                              |
+| /feature/addDeviceController  | Added the device controller for handling http requests                  |
+| /feature/addMudBlazor         | Introduced MudBlazor framework to the front end - created overview page |
+| /feature/fileUpload           | Brought file upload functionality to the front end                      |
+| /feature/ShowDeviceDetails    | Functionality for showing device details was added                      |
+| /feature/docker               | Possibility to run app in docker container added                        |
+| /feature/readme               | Branch to created this ReadMe                                           |
+
 # Possible improvements
 This web application can be seen as a kind of proof of concept. Therefore some improvements could be implemented to get better user experience and also improve code quality, which wasn't possible by the time spent.<br>
 - Currently only the backend part is covered by UnitTests. These could be extended also on the frontend part.
