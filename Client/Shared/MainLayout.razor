@@ -1,0 +1,16 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+  <MudAppBar Color="Color.Primary" Fixed="false">
+    <h3>Sample-Task-Web by Christian Lachmann 2021-11-07</h3>
+    <MudSpacer />
+    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Link="https://github.com/Lachi90/SampleTaskWeb" />
+  </MudAppBar>
+  <MudMainContent>
+    @Body
+  </MudMainContent>
+</MudLayout>
