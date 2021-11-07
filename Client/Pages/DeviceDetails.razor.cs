@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 using SampleTaskWeb.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace SampleTaskWeb.Client.Pages
 {
@@ -37,6 +37,11 @@ namespace SampleTaskWeb.Client.Pages
         Console.WriteLine(ex.Message);
       }
 
+    }
+
+    private void BackButtonClicked(MouseEventArgs obj)
+    {
+      _navigationManager.NavigateTo("/");
     }
 
     private Dictionary<string, string> GetFieldsWithValues(object obj)

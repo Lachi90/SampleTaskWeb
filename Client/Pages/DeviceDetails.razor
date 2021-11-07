@@ -1,15 +1,28 @@
 ﻿@page "/device/{Device}"
 
+@inject NavigationManager _navigationManager
+
 <MudContainer>
-  <MudTable Items="@_properties">
-    <HeaderContent>
-      <MudTh>PropertyName</MudTh>
-      <MudTh>PropertyValue</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-      <MudTd>@context.PropertyKey</MudTd>
-      <MudTd>@context.PropertyValue</MudTd>
-    </RowTemplate>
-  </MudTable>
+  <div class="d-flex flex-row-reverse">
+    <MudButton HtmlTag="label"
+               Class="p-2"
+               Variant="Variant.Filled"
+               Color="Color.Primary"
+               OnClick="BackButtonClicked">
+      Back
+    </MudButton>
+  </div>
+  <div class="pt-4">
+    <MudTable Items="@_properties">
+      <HeaderContent>
+        <MudTh>PropertyName</MudTh>
+        <MudTh>PropertyValue</MudTh>
+      </HeaderContent>
+      <RowTemplate>
+        <MudTd>@context.PropertyKey</MudTd>
+        <MudTd>@context.PropertyValue</MudTd>
+      </RowTemplate>
+    </MudTable>
+  </div>
 </MudContainer>
 
