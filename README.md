@@ -66,5 +66,5 @@ This web application can be seen as a kind of proof of concept. Therefore some i
 - Currently only the backend part is covered by UnitTests. These could be extended also on the frontend part.
 - For better usability loading screens could introduced on the frontend part.
 - Error handling and feedback to the user: at the moment the user does not get informed about something going wrong on the data processing.
-- Feature for editing the data already present.
+- Feature for editing the data already present to achieve all the CRUD operations.
 - Extending the swagger documentation
