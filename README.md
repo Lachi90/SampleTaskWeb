@@ -15,11 +15,13 @@ This software was created as a given sample task. It should be able to select a 
 The content of the json-file should be presented on a webpage. Clicking on an item should present a detail page. Also deleting of single data entry should be possible.
 
 # Technology Stack
-To achieve the goal the following technologies were used:
+To achieve the goal the following technologies/ tools were used:
 - C#
 - Blazor WASM
 - MudBlazor
 - EntityFrameworkCore
+- Moq
+- FluentAssertions
 - SQLite
 - Swagger
 - Docker
