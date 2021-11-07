@@ -11,8 +11,8 @@
 by Christian Lachmann 2021-11-07
 
 # Purpose
-This software was created as a given sample task. It should be able to select a given json-file, upload it to server and store it either on a database or on the filesystem.
-The content of the json-file should be presented on the webpage. A click on an item shows a detail page. Also deleting of single data should be possible.
+This software was created as a given sample task. It should be able to select a json-file from the client filesystem, upload it to server and store it either on a database or on the filesystem.
+The content of the json-file should be presented on a webpage. Clicking on an item should present a detail page. Also deleting of single data entry should be possible.
 
 # Technology Stack
 To achieve the goal the following technologies were used:
@@ -25,7 +25,7 @@ To achieve the goal the following technologies were used:
 - Docker
 
 # Deployment
-The web app can either be started via <b>VisualStudio</b> or can be run in a <b>Docker container</b>.
+The web app can either be started via <b>VisualStudio</b> or can be run in a <b>Docker</b> container.
 
 To start the web app via Docker the first step is to build an image from the current code base.
 
@@ -65,3 +65,4 @@ This web application can be seen as a kind of proof of concept. Therefore some i
 - For better usability loading screens could introduced on the frontend part.
 - Error handling and feedback to the user: at the moment the user does not get informed about something going wrong on the data processing.
 - Feature for editing the data already present.
+- Extending the swagger documentation
