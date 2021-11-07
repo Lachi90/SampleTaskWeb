@@ -51,8 +51,14 @@ Port depends on the selected deployment.
 
 # How it works
 When either started via VS or Docker on the first page all the devices are shown. 
-To add more devices press the "Upload json" Button and select the corresponding json file. The data gets send to the backed to be stored and the page refreshes. Getting the detail view of just a click on the device itself is necessary. It is possible to navigate back to overview via pressing the "Back" button on the upper right corner.
-For deleting a device just click on the trash bin icon. 
+To add more devices press the "Upload json" Button and select the corresponding json file. The data gets send to the backed to be stored and the page refreshes. 
+For deleting a device just click on the trash bin icon.</br>
+
+<img src="./img/overview.png" alt="overview"><br>
+
+Getting the detail view of just a click on the device itself is necessary. It is possible to navigate back to overview via pressing the "Back" button on the upper right corner.<br>
+
+<img src="./img/detailview.png" alt="detail"><br>
 
 # How it technically works
 In deviation to the given task, the json file doesn't get uploaded to the backend directly. It gets read and deserialized on the client side. Embedded in the corresponding model class, the data gets sent via http call to the backend. 
@@ -60,6 +66,12 @@ In my opinion this has infrastructure and performance benefits.
 - It's possible to only send the data really needed to the backend, therefore you can minimize traffic.
 - No need to take care about deleting old uploaded json files.
 - Disk space saved by not having the json files on the backend side.
+
+Once the data has reached the controller of the backend service, it gets stored in database via repository pattern. Due to the lightweight of the database SQLite gets used. The controller also provides functionality for deleting data and also to get all the data from the database. 
+
+For creating the database a database-first-approach via entity framework is implemented.
+
+The build-in dependency injection possibility of ASP.NET Core is used to register the repository for accessing the database.  
 
 # Possible improvements
 This web application can be seen as a kind of proof of concept. Therefore some improvements could be implemented to get better user experience and also improve code quality, which wasn't possible by the time spent.<br>
