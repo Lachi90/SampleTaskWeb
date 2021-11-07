@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Components.Web;
 using SampleTaskWeb.Client.Parser;
 using SampleTaskWeb.Shared;
 
-namespace SampleTaskWeb.Client.Shared
+namespace SampleTaskWeb.Client.Pages
 {
-  partial class MainLayout
+  partial class Index
   {
     private IEnumerable<Device> _devices = new List<Device>();
 
@@ -42,6 +42,11 @@ namespace SampleTaskWeb.Client.Shared
         await _deviceManager.DeleteDeviceAsync(device);
         await FetchData();
       }
+    }
+
+    private void OnDeviceClick(Device device)
+    {
+      _navigationManager.NavigateTo($"/device/{device.ToJsonString()}");
     }
 
     private async Task FetchData()

@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using SampleTaskWeb.Shared;
 using System.Net.Http.Json;
-using System;
 
 namespace SampleTaskWeb.Client.Manager
 {
