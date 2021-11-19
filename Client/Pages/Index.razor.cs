@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
@@ -64,6 +65,14 @@ namespace SampleTaskWeb.Client.Pages
       }
 
       return null;
+    }
+
+    private void OnComparisonButtonClicked()
+    {
+      var deviceIds = _selectedDevices.Select(x => x.InternalId.ToString()).ToArray();
+      var deviceIdsconcatenated = string.Join(";", deviceIds);
+
+      _navigationManager.NavigateTo($"/comparison/{deviceIdsconcatenated}");
     }
 
     private void OnDeviceClick(Device device)
