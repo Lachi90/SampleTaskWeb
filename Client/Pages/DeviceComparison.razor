@@ -1,6 +1,39 @@
 ﻿@page "/comparison/{DeviceIds}"
 
 @using SampleTaskWeb.Client.Manager
+@using SampleTaskWeb.Shared
 
 @inject HttpClient _httpClient
 @inject DeviceManager _deviceManager
+
+@inject NavigationManager _navigationManager
+
+<MudContainer>
+  <div class="d-flex flex-row-reverse">
+    <MudButton HtmlTag="label"
+               Class="p-2"
+               Variant="Variant.Filled"
+               Color="Color.Primary"
+               OnClick="BackButtonClicked">
+      Back
+    </MudButton>
+  </div>
+  <div class="pt-4">
+    <MudTable Items="_propertyWithDeviceValues">
+      <HeaderContent>
+        <MudTh>--</MudTh>
+        @foreach (var name in _devices.Select(x => x.Name))
+        {
+          <MudTh>Name: @name</MudTh>
+        }
+      </HeaderContent>
+      <RowTemplate>
+        <MudTd>@context.PropertyName</MudTd>
+        @foreach (var prop in context.PropertyValues)
+        {
+          <MudTd>@prop</MudTd>
+        }
+      </RowTemplate>
+    </MudTable>
+  </div>
+</MudContainer>

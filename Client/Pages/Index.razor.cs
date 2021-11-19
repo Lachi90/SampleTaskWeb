@@ -16,6 +16,7 @@ namespace SampleTaskWeb.Client.Pages
 
     protected override async Task OnInitializedAsync()
     {
+      _selectedDevices.Clear();
       await FetchData();
     }
 
