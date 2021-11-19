@@ -13,7 +13,13 @@ namespace SampleTaskWeb.Client.Pages
     public string DeviceIds { get; set; }
 
     private ICollection<Device> _devices = new List<Device>();
+    private HashSet<PropertyWithDeviceValues> _selectedRows = new HashSet<PropertyWithDeviceValues>();
+
     private ICollection<PropertyWithDeviceValues> _propertyWithDeviceValues = new List<PropertyWithDeviceValues>();
+    private ICollection<PropertyWithDeviceValues> _rowsToShow = new List<PropertyWithDeviceValues>();
+    private ICollection<PropertyWithDeviceValues> _rowsHidden = new List<PropertyWithDeviceValues>();
+
+    private bool _areRowsHidden = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -43,6 +49,8 @@ namespace SampleTaskWeb.Client.Pages
 
         _propertyWithDeviceValues.Add(propertyWithDeviceValues);
       }
+
+      _rowsToShow = _propertyWithDeviceValues;
     }
 
     private bool CheckForValueEquality(string propertyName, string propertyValue)
@@ -55,6 +63,25 @@ namespace SampleTaskWeb.Client.Pages
     private void BackButtonClicked(MouseEventArgs obj)
     {
       _navigationManager.NavigateTo("/");
+    }
+
+    private void HideButtonClicked()
+    {
+      if (_areRowsHidden == false)
+      {
+        _rowsHidden = _selectedRows;
+        _rowsToShow = _propertyWithDeviceValues.Where(x => !_rowsHidden.Any(y => y.PropertyName == x.PropertyName)).ToList();
+        _areRowsHidden = true;
+      } else
+      {
+        _areRowsHidden = false;
+        foreach(var hiddenRow in _rowsHidden)
+        {
+          _rowsToShow.Add(hiddenRow);
+        }
+      }
+
+      StateHasChanged();
     }
 
     private Dictionary<string, string> GetFieldsWithValues(object obj)

@@ -18,7 +18,7 @@
     </MudButton>
   </div>
   <div class="pt-4">
-    <MudTable Items="_propertyWithDeviceValues">
+    <MudTable Items="_rowsToShow" MultiSelection="true" @bind-SelectedItems="_selectedRows">
       <HeaderContent>
         <MudTh>--</MudTh>
         @foreach (var name in _devices.Select(x => x.Name))
@@ -41,5 +41,21 @@
         }
       </RowTemplate>
     </MudTable>
+  </div>
+    <div class="d-flex flex-row-reverse">
+      <MudButton HtmlTag="label"
+                 Class="p-2 mt-2"
+                 Variant="Variant.Filled"
+                 Color="Color.Primary"
+                 OnClick="HideButtonClicked">
+        @if (_areRowsHidden)
+        {
+          <div>Show Rows</div>
+        }
+        else
+        {
+          <div>Hide Rows</div>
+        }
+      </MudButton>
   </div>
 </MudContainer>
