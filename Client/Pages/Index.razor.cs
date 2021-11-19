@@ -41,6 +41,7 @@ namespace SampleTaskWeb.Client.Pages
       {
         await _deviceManager.DeleteDeviceAsync(device);
         await FetchData();
+        StateHasChanged();
       }
     }
 
