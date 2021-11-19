@@ -11,6 +11,7 @@ namespace SampleTaskWeb.Client.Pages
   partial class Index
   {
     private IEnumerable<Device> _devices = new List<Device>();
+    private ICollection<Device> _selectedDevices = new List<Device>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -43,6 +44,26 @@ namespace SampleTaskWeb.Client.Pages
         await FetchData();
         StateHasChanged();
       }
+    }
+
+    private Action DeviceChecked(bool isSelected, Device device)
+    {
+      if (device != null)
+      {
+        if (isSelected)
+        {
+          _selectedDevices.Add(device);
+        }
+        else
+        {
+          if (_selectedDevices.Contains(device))
+          {
+            _selectedDevices.Remove(device);
+          }
+        }
+      }
+
+      return null;
     }
 
     private void OnDeviceClick(Device device)

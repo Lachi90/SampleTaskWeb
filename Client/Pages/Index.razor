@@ -34,6 +34,7 @@
                 </CardHeaderContent>
                 <CardHeaderActions>
                   <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Info" OnClick="@(args => DeleteButtonPressed(args, device))" />
+                  <MudCheckBox Color="Color.Primary" T="bool" CheckedChanged="@(isSelected => DeviceChecked(isSelected, device))" />
                 </CardHeaderActions>
               </MudCardHeader>
               <MudCardContent>
