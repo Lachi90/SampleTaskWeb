@@ -1,7 +1,6 @@
 ﻿@page "/comparison/{DeviceIds}"
 
 @using SampleTaskWeb.Client.Manager
-@using SampleTaskWeb.Shared
 
 @inject HttpClient _httpClient
 @inject DeviceManager _deviceManager
@@ -31,7 +30,14 @@
         <MudTd>@context.PropertyName</MudTd>
         @foreach (var prop in context.PropertyValues)
         {
+          @if (CheckForValueEquality(context.PropertyName, prop))
+          {
+          <MudTd Style="background-color: lawngreen">@prop</MudTd>
+          }
+          else
+          {
           <MudTd>@prop</MudTd>
+          }
         }
       </RowTemplate>
     </MudTable>

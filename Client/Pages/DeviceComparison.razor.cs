@@ -45,6 +45,13 @@ namespace SampleTaskWeb.Client.Pages
       }
     }
 
+    private bool CheckForValueEquality(string propertyName, string propertyValue)
+    {
+      var propertyValues = _propertyWithDeviceValues.SingleOrDefault(x => x.PropertyName == propertyName).PropertyValues;
+
+      return propertyValues.Where(x => x == propertyValue).Count() > 1;
+    }
+
     private void BackButtonClicked(MouseEventArgs obj)
     {
       _navigationManager.NavigateTo("/");
